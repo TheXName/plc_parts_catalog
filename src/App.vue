@@ -1,11 +1,24 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <TheNavigation />
+
+  <main class="container">
+    <router-view :key="$route.fullPath"></router-view>
+  </main>
 </template>
 
-<style scoped></style>
+<script>
+import TheNavigation from '@/components/TheNavigation.vue'
+
+export default {
+  name: 'App',
+  components: { TheNavigation }
+}
+</script>
+
+<style>
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+</style>
