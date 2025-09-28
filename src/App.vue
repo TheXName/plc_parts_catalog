@@ -1,17 +1,17 @@
 <template>
   <TheNavigation />
-
   <main class="container">
-    <router-view :key="$route.fullPath"></router-view>
+    <router-view />
   </main>
 </template>
 
 <script>
 import TheNavigation from '@/components/TheNavigation.vue'
-
-export default {
+export default{
   name: 'App',
-  components: { TheNavigation }
+  components: {
+    TheNavigation,
+  }
 }
 </script>
 

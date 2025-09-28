@@ -1,10 +1,16 @@
 <template>
-  <nav class="nav">
-    <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
-    <router-link to="/products">Products</router-link>
-    <router-link to="/cart">Cart</router-link>
-  </nav>
+  <header class="nav">
+    <div class="nav__inner">
+      <RouterLink class="brand" to="/">PLC Parts</RouterLink>
+
+      <nav class="menu">
+        <RouterLink to="/" exact-active-class="active">Home</RouterLink>
+        <RouterLink to="/catalog">Catalog</RouterLink>
+        <RouterLink to="/favorites">Favorites</RouterLink>
+        <RouterLink to="/cart">Cart</RouterLink>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -12,10 +18,11 @@ export default { name: 'TheNavigation' }
 </script>
 
 <style scoped>
-.nav{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;
-     padding:12px 20px;border-bottom:1px solid #e5e7eb;background:#fff}
-.brand{font-weight:700;text-decoration:none}
-.links{display:flex;gap:16px}
-.links a{text-decoration:none}
-.router-link-active{font-weight:600}
+.nav { background:#233745; color:#fff; }
+.nav__inner { max-width:1100px; margin:0 auto; padding:0 16px;
+  height:56px; display:flex; align-items:center; justify-content:space-between; }
+.brand { font-weight:700; }
+.menu { display:flex; gap:16px; }
+.menu a { color:#fff; opacity:.85; text-decoration:none; padding:8px 6px; border-radius:6px; }
+.menu a:hover, .menu a.active, .menu :global(.router-link-active) { opacity:1; background:#2f4556; }
 </style>

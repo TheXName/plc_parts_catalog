@@ -1,20 +1,34 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import HomeView from '@/views/HomeView.vue'
-import AboutView from '@/views/AboutView.vue'
-import ProductsView from '@/views/ProductsView.vue'
+
+const routes = [
+  {
+    path: '/',
+    name: 'HomeView',
+    component: HomeView,
+  },
+  {
+    path: '/catalog',
+    name: 'catalog.view',
+    component: () => import('@/views/CatalogView.vue'),
+  },
+  {
+    path: '/favorites',
+    name: 'favorites.view',
+    component: () => import('@/views/FavoritesView.vue'),
+  },
+  {
+    path: '/cart',
+    name: 'cart.view',
+    component: () => import('@/views/CartView.vue'),
+  },
+  { path: '/:pathMatch(.*)*', redirect: '/' }
+]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    { path: '/', name: 'home', component: HomeView },
-    { path: '/products', name: 'products', component: ProductsView },
-    { path: '/about', name: 'about', component: AboutView }
-  ],
-
-  scrollBehavior() {
-    return { top: 0 }
-  }
+  history: createWebHistory(),
+  routes,
+  scrollBehavior: () => ({ top: 0 })
 })
 
 export default router

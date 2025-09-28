@@ -1,6 +1,7 @@
 <template>
   <section>
-    <h1>Welcome to PLC Parts Catalog</h1>
+    <h1>Home</h1>
+    <p>Welcome to the PLC equipment catalog.</p>
   </section>
 </template>
 
