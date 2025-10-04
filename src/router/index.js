@@ -4,25 +4,24 @@ import HomeView from '@/views/HomeView.vue'
 const routes = [
   {
     path: '/',
-    name: 'HomeView',
+    name: 'home',
     component: HomeView,
   },
   {
     path: '/catalog',
-    name: 'catalog.view',
+    name: 'catalog',
     component: () => import('@/views/CatalogView.vue'),
   },
   {
     path: '/favorites',
-    name: 'favorites.view',
+    name: 'favorites',
     component: () => import('@/views/FavoritesView.vue'),
   },
   {
     path: '/cart',
-    name: 'cart.view',
+    name: 'cart',
     component: () => import('@/views/CartView.vue'),
-  },
-  { path: '/:pathMatch(.*)*', redirect: '/' }
+  }
 ]
 
 const router = createRouter({

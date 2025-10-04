@@ -1,28 +1,38 @@
 <template>
-  <header class="nav">
-    <div class="nav__inner">
-      <RouterLink class="brand" to="/">PLC Parts</RouterLink>
+  <v-app-bar flat>
+    <v-container class="d-flex align-center justify-space-between" fluid>
+      <div class="d-flex align-center">
+        <v-icon class="mr-2">mdi-chip</v-icon>
+        <RouterLink to="/" class="brand"> PLC Parts </RouterLink>
+      </div>
 
-      <nav class="menu">
-        <RouterLink to="/" exact-active-class="active">Home</RouterLink>
-        <RouterLink to="/catalog">Catalog</RouterLink>
-        <RouterLink to="/favorites">Favorites</RouterLink>
-        <RouterLink to="/cart">Cart</RouterLink>
-      </nav>
-    </div>
-  </header>
+      <div class="d-flex align-center">
+        <v-btn variant="text" :to="{ name: 'home' }">Home</v-btn>
+        <v-btn variant="text" :to="{ name: 'catalog' }">Catalog</v-btn>
+        <v-btn variant="text" :to="{ name: 'favorites' }">Favorites</v-btn>
+        <v-btn variant="text" :to="{ name: 'cart' }">Cart</v-btn>
+      </div>
+    </v-container>
+  </v-app-bar>
 </template>
 
 <script>
-export default { name: 'TheNavigation' }
+import { RouterLink } from 'vue-router'
+
+export default {
+  name: 'AppNav',
+  components: { RouterLink },
+}
 </script>
 
 <style scoped>
-.nav { background:#233745; color:#fff; }
-.nav__inner { max-width:1100px; margin:0 auto; padding:0 16px;
-  height:56px; display:flex; align-items:center; justify-content:space-between; }
-.brand { font-weight:700; }
-.menu { display:flex; gap:16px; }
-.menu a { color:#fff; opacity:.85; text-decoration:none; padding:8px 6px; border-radius:6px; }
-.menu a:hover, .menu a.active, .menu :global(.router-link-active) { opacity:1; background:#2f4556; }
+.brand {
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: inherit;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
 </style>
