@@ -1,5 +1,5 @@
 <template>
-  <v-footer app class="py-4">
+  <v-footer app height="70" class="py-1">
     <v-container class="d-flex align-center justify-space-between" fluid>
        <v-col class="text-center">
           © 2025 Mark Kapchikaev
