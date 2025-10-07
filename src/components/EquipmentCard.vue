@@ -28,6 +28,7 @@
 
       <v-btn
         :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
+        :color="isFavorite ? 'red' : undefined"
         variant="text"
         @click="$emit('favorite', item.id)"
         :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
@@ -78,6 +79,12 @@ export default {
 </script>
 
 <style scoped>
-.text-truncate { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.h-100 { height: 100%; }
+.text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.h-100 {
+  height: 100%;
+}
 </style>

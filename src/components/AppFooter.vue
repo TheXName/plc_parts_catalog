@@ -1,9 +1,7 @@
 <template>
   <v-footer app height="70" class="py-1">
     <v-container class="d-flex align-center justify-space-between" fluid>
-       <v-col class="text-center">
-          © 2025 Mark Kapchikaev
-        </v-col>
+      <v-col class="text-center"> © 2025 Mark Kapchikaev </v-col>
     </v-container>
   </v-footer>
 </template>
@@ -11,7 +9,7 @@
 <script>
 export default {
   name: 'AppFooter',
-};
+}
 </script>
 
 <style scoped>

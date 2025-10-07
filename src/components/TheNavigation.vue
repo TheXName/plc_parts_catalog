@@ -20,7 +20,7 @@
 import { RouterLink } from 'vue-router'
 
 export default {
-  name: 'AppNav',
+  name: 'TheNavigation',
   components: { RouterLink },
 }
 </script>

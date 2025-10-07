@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <AppNav />
+    <TheNavigation />
     <v-main>
       <v-container class="py-8">
         <RouterView />
@@ -12,11 +12,11 @@
 
 <script>
 import { RouterView } from 'vue-router'
-import AppNav from '@/components/TheNavigation.vue'
-import AppFooter from '@/components/Footer.vue'
+import TheNavigation from '@/components/TheNavigation.vue'
+import AppFooter from '@/components/AppFooter.vue'
 
 export default {
   name: 'App',
-  components: { AppNav, AppFooter, RouterView },
+  components: { TheNavigation, AppFooter, RouterView },
 }
 </script>
