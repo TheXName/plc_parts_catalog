@@ -19,7 +19,7 @@
         variant="tonal"
         prepend-icon="mdi-cart-plus"
         :disabled="item.stock === 0"
-        @click="$emit('add-to-cart', item.id)"
+        @click="$emit('add', item.id)"
       >
         Add
       </v-btn>
@@ -65,7 +65,7 @@ export default {
     isFavorite: { type: Boolean, default: false },
     currency: { type: String, default: '€' },
   },
-  emits: ['favorite', 'add-to-cart'],
+  emits: ['favorite', 'add'],
   computed: {
     priceText() {
       const n = Number(this.item?.price ?? 0)

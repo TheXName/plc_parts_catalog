@@ -10,6 +10,7 @@
           :item="item"
           :is-favorite="favoritesStore.isFav(item.id)"
           @favorite="onFavorite"
+          @add="onAdd"
         />
       </v-col>
     </v-row>
@@ -21,6 +22,7 @@
 <script>
 import { useProductsStore } from '@/stores/productsStore'
 import { useFavoritesStore } from '@/stores/favoritesStore'
+import { useCartStore } from '@/stores/cartStore'
 import EquipmentCard from '@/components/EquipmentCard.vue'
 import FilterBar from '@/components/FilterBar.vue'
 
@@ -38,6 +40,9 @@ export default {
     },
     favoritesStore() {
       return useFavoritesStore()
+    },
+    cartStore() {
+      return useCartStore()
     },
 
     visible() {
@@ -66,6 +71,9 @@ export default {
   methods: {
     onFavorite(id) {
       this.favoritesStore.toggle(id)
+    },
+    onAdd(id) {
+      this.cartStore.add(id, 1)
     },
   },
 }

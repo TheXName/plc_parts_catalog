@@ -8,6 +8,7 @@
           :item="item"
           :is-favorite="favoritesStore.isFav(item.id)"
           @favorite="onFavorite"
+          @add="onAdd"
         />
       </v-col>
     </v-row>
@@ -19,6 +20,7 @@
 <script>
 import { useProductsStore } from '@/stores/productsStore'
 import { useFavoritesStore } from '@/stores/favoritesStore'
+import { useCartStore } from '@/stores/cartStore'
 import EquipmentCard from '@/components/EquipmentCard.vue'
 
 export default {
@@ -36,11 +38,17 @@ export default {
       const byId = this.productsStore.byId
       return this.favoritesStore.ids.map((id) => byId(id)).filter(Boolean)
     },
+    cartStore() {
+      return useCartStore()
+    },
   },
 
   methods: {
     onFavorite(id) {
       this.favoritesStore.toggle(id)
+    },
+    onAdd(id) {
+      this.cartStore.add(id, 1)
     },
   },
 }
