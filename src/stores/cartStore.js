@@ -1,10 +1,8 @@
-// src/stores/cartStore.js
 import { defineStore } from 'pinia'
 import { useProductsStore } from './productsStore'
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
-    // [{ id:number|string, qty:number }]
     items: [],
   }),
 
@@ -13,7 +11,6 @@ export const useCartStore = defineStore('cart', {
     totalCount: (s) => s.items.reduce((acc, it) => acc + it.qty, 0),
     byId: (s) => (id) => s.items.find((it) => it.id === id),
 
-    // Склеенные строки для вёрстки
     rows: (s) => {
       const products = useProductsStore().items
       return s.items
@@ -24,7 +21,6 @@ export const useCartStore = defineStore('cart', {
         .filter(Boolean)
     },
 
-    // Общая сумма
     totalPrice: (s) => {
       const products = useProductsStore().items
       return s.items.reduce((sum, it) => {
@@ -58,9 +54,8 @@ export const useCartStore = defineStore('cart', {
     },
   },
 
-  // pinia-plugin-persistedstate
   persist: {
-    key: 'cart:v1', // версионируй ключ — удобно для будущих миграций
+    key: 'cart:v1',
     paths: ['items'],
   },
 })

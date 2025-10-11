@@ -10,7 +10,7 @@
           :item="item"
           :is-favorite="favoritesStore.isFav(item.id)"
           @favorite="onFavorite"
-          @add="onAdd"
+          @add-to-cart="onAdd"
         />
       </v-col>
     </v-row>
@@ -65,6 +65,22 @@ export default {
         default:
           return list
       }
+    },
+  },
+
+  watch: {
+    '$route.query.category': {
+      immediate: true,
+      handler() {
+        const cat = this.$route.query.category
+        this.filters.category = cat && this.productsStore.categories.includes(cat) ? cat : 'All'
+      },
+    },
+    'filters.category'(val) {
+      const q = { ...this.$route.query }
+      if (val && val !== 'All') q.category = val
+      else delete q.category
+      this.$router.replace({ name: 'catalog', query: q })
     },
   },
 

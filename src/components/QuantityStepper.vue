@@ -28,7 +28,7 @@ export default {
   props: {
     modelValue: { type: Number, required: true },
     min: { type: Number, default: 1 },
-    max: { type: Number, default: 0 }, // 0 = нет верхнего лимита
+    max: { type: Number, default: 0 },
     step: { type: Number, default: 1 },
   },
   emits: ['update:modelValue'],

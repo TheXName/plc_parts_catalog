@@ -8,7 +8,7 @@
           :item="item"
           :is-favorite="favoritesStore.isFav(item.id)"
           @favorite="onFavorite"
-          @add="onAdd"
+          @add-to-cart="onAdd"
         />
       </v-col>
     </v-row>

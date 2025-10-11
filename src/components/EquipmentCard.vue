@@ -19,7 +19,7 @@
         variant="tonal"
         prepend-icon="mdi-cart-plus"
         :disabled="item.stock === 0"
-        @click="$emit('add', item.id)"
+        @click="emitAddToCart"
       >
         Add
       </v-btn>
@@ -30,8 +30,8 @@
         :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
         :color="isFavorite ? 'red' : undefined"
         variant="text"
-        @click="$emit('favorite', item.id)"
         :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+        @click="emitFavorite"
       />
     </v-card-actions>
   </v-card>
@@ -40,32 +40,33 @@
 <script>
 export default {
   name: 'EquipmentCard',
+
   props: {
     item: {
       type: Object,
       required: true,
       validator(i) {
-        const hasBase =
+        const baseOk =
           i &&
           typeof i.id !== 'undefined' &&
           typeof i.name === 'string' &&
           typeof i.category === 'string' &&
           (typeof i.price === 'number' || !isNaN(Number(i.price)))
+        if (!baseOk) return false
 
-        if (!hasBase) return false
-
-        if (typeof i.stock !== 'undefined') {
+        if (i.stock !== undefined) {
           const n = Number(i.stock)
           if (!Number.isFinite(n) || n < 0) return false
         }
-
         return true
       },
     },
     isFavorite: { type: Boolean, default: false },
     currency: { type: String, default: '€' },
   },
-  emits: ['favorite', 'add'],
+
+  emits: ['favorite', 'add-to-cart'],
+
   computed: {
     priceText() {
       const n = Number(this.item?.price ?? 0)
@@ -73,6 +74,15 @@ export default {
     },
     placeholder() {
       return 'https://via.placeholder.com/600x400?text=PLC+Part'
+    },
+  },
+
+  methods: {
+    emitFavorite() {
+      if (this.item?.id !== undefined) this.$emit('favorite', this.item.id)
+    },
+    emitAddToCart() {
+      if (this.item?.id !== undefined) this.$emit('add-to-cart', this.item.id)
     },
   },
 }
