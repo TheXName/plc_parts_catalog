@@ -21,13 +21,13 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('@/views/CartView.vue'),
-  }
+  },
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior: () => ({ top: 0 })
+  scrollBehavior: () => ({ top: 0 }),
 })
 
 export default router
